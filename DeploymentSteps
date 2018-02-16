@@ -1,0 +1,6 @@
+# deployment pipeline commands
+git config --global user.name "CodeShip deployment"
+git config --global user.email "grohan2002@gmail.com"
+git remote add production git@git.wpengine.com:production/rohanhgupta.git
+#git push production master --force
+git push production $CI_BRANCH
