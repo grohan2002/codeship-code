@@ -1,0 +1,5 @@
+# Test Pipeline pipeline commands
+git config --global user.name "CodeShip deployment"
+git config --global user.email "grohan2002@gmail.com"
+echo $CI_BRANCH
+if [ "$CI_BRANCH" != "master" ]; then export FIREFOX_VERSION=58.0 && curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/firefox.sh | bash -s; export GECKODRIVER_VERSION=0.19.1 && source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/rust.sh)" && curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/geckodriver.sh | bash -s;  git remote add staging git@git.wpengine.com:staging/rohanhgupta.git; git push staging $CI_BRANCH; pyenv local 3.5; pip install selenium; cd test && python Testcase.py; fi
